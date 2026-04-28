@@ -1,3 +1,5 @@
+import teamImage from "@/assets/banner-image.webp";
+
 export const Team = () => (
   <section className="w-full bg-card py-8 sm:py-10 md:py-12 lg:py-16">
     <div className="container">
@@ -9,7 +11,7 @@ export const Team = () => (
       </div>
       <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
         <img 
-          src="/team.jpg" 
+          src={teamImage}
           alt="Adjusting To Health team" 
           className="w-full h-auto object-cover"
         />
