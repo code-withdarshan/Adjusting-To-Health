@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Adjusting To Health
 
-TODO: Document your project here
+A Vite React website for Adjusting To Health.
