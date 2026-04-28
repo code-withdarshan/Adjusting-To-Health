@@ -61,7 +61,7 @@ export const SiteHeader = () => {
           type="button"
           onClick={() => setOpen(!open)}
           className="grid h-10 w-10 place-items-center text-primary-foreground lg:hidden"
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-tablet-menu"
         >
@@ -72,9 +72,17 @@ export const SiteHeader = () => {
       {open && (
         <div
           id="mobile-tablet-menu"
-          className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-primary text-primary-foreground sm:top-20 lg:hidden"
+          className="fixed inset-x-0 bottom-0 top-16 z-40 text-primary-foreground sm:top-20 lg:hidden"
+          role="dialog"
+          aria-modal="true"
         >
-          <div className="container py-6 sm:py-8">
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu backdrop"
+            className="absolute inset-0 bg-black/55"
+          />
+          <div className="relative h-full w-[86%] max-w-sm overflow-y-auto bg-primary px-5 py-6 shadow-2xl animate-in slide-in-from-left duration-300 sm:px-6 sm:py-8">
             <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
               {links.map((l) => (
                 <Link key={l.href} to={l.href} onClick={() => setOpen(false)}
