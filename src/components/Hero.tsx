@@ -15,8 +15,8 @@ export const Hero = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/80 backdrop-blur sm:px-4 sm:py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Sydney · Est. Chiropractic
             </span>
-            <h1 className="mt-6 font-display text-3xl font-light leading-[1.1] text-primary-foreground sm:text-4xl md:mt-8 md:text-5xl md:leading-[1.05]">
-              Sydney's most <em className="font-medium not-italic text-accent">thorough</em>,
+            <h1 className="mt-6 max-w-full font-display text-3xl font-light leading-[1.1] text-primary-foreground sm:text-4xl md:mt-8 md:text-5xl md:leading-[1.05]">
+              Sydney's most <em className="block font-medium not-italic text-accent sm:inline">thorough,</em>
               <br /> evidence-based chiropractors.
             </h1>
             <p className="mt-4 text-base leading-relaxed text-primary-foreground/75 sm:text-lg md:mt-6">

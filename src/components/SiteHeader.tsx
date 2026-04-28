@@ -33,7 +33,9 @@ export const SiteHeader = () => {
   }, []);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-primary/95 backdrop-blur border-b border-white/10 transition-colors">
+    <header className={`sticky inset-x-0 top-0 z-50 border-b border-white/10 transition-colors ${
+      open ? "bg-primary" : "bg-primary/95 backdrop-blur"
+    }`}>
       <div className="container flex h-16 items-center justify-between sm:h-20">
         <Link to="/" className="flex items-center shrink-0">
           <img src={logo} alt="Adjusting to Health Logo" className="h-8 w-auto sm:h-10" />
@@ -56,8 +58,9 @@ export const SiteHeader = () => {
         </div>
 
         <button
+          type="button"
           onClick={() => setOpen(!open)}
-          className="p-1 text-primary-foreground lg:hidden"
+          className="grid h-10 w-10 place-items-center text-primary-foreground lg:hidden"
           aria-label="Menu"
           aria-expanded={open}
           aria-controls="mobile-tablet-menu"
@@ -66,44 +69,28 @@ export const SiteHeader = () => {
         </button>
       </div>
 
-      <div
-        id="mobile-tablet-menu"
-        className={`fixed inset-0 z-[60] transition-opacity duration-300 lg:hidden ${
-          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          aria-label="Close menu backdrop"
-          className="absolute inset-0 bg-black/45"
-        />
-        <aside
-          className={`absolute left-0 top-0 h-full w-[85%] max-w-sm bg-primary p-4 shadow-2xl transition-transform duration-300 sm:p-5 ${
-            open ? "translate-x-0" : "-translate-x-full"
-          }`}
+      {open && (
+        <div
+          id="mobile-tablet-menu"
+          className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-primary text-primary-foreground sm:top-20 lg:hidden"
         >
-          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
-            <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
-              <img src={logo} alt="Adjusting to Health Logo" className="h-8 w-auto" />
-            </Link>
-            <button type="button" onClick={() => setOpen(false)} className="p-1 text-primary-foreground" aria-label="Close menu">
-              <X className="h-6 w-6" />
-            </button>
-          </div>
+          <div className="container py-6 sm:py-8">
+            <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
+              {links.map((l) => (
+                <Link key={l.href} to={l.href} onClick={() => setOpen(false)}
+                  className="border-b border-white/10 px-1 py-4 text-base font-medium text-primary-foreground transition-colors hover:text-accent active:text-accent">{l.label}</Link>
+              ))}
+            </nav>
 
-          <div className="flex flex-col gap-2">
-            {links.map((l) => (
-              <Link key={l.href} to={l.href} onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm text-primary-foreground/90 hover:bg-white/5 active:bg-white/10">{l.label}</Link>
-            ))}
-            <a href="tel:+61000000000" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-primary-foreground/90 hover:bg-white/5">
-              <Phone className="h-4 w-4" /> Call Us
-            </a>
-            <Button variant="hero" className="mt-2 w-full" onClick={() => setOpen(false)}>Book Appointment</Button>
+            <div className="mt-6 flex flex-col gap-4 border-t border-white/10 pt-6">
+              <a href="tel:+61000000000" className="flex items-center gap-2 text-sm font-medium text-primary-foreground/85 hover:text-primary-foreground">
+                <Phone className="h-4 w-4" /> Call Us
+              </a>
+              <Button variant="hero" className="w-full" onClick={() => setOpen(false)}>Book Appointment</Button>
+            </div>
           </div>
-        </aside>
-      </div>
+        </div>
+      )}
     </header>
   );
 };
