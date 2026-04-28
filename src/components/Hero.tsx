@@ -1,6 +1,6 @@
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import bannerImage from "@/assets/banner-image.webp";
+import bannerImage from "@/assets/site-image.png";
 
 export const Hero = () => {
   return (
