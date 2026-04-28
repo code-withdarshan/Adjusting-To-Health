@@ -1,4 +1,5 @@
 import { MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const locs = [
   { name: "Rosebery", addr: "Shop 4, 73 Lawrence St, Rosebery NSW 2018" },
@@ -11,11 +12,7 @@ export const SiteFooter = () => (
     <div className="container">
       <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_2fr]">
         <div className="px-0">
-          <div className="flex items-center gap-2">
-            <span className="font-display text-xl sm:text-2xl font-medium">Adjusting</span>
-            <span className="h-1 w-1 rounded-full bg-accent" />
-            <span className="font-display text-xl sm:text-2xl font-light italic opacity-70">to Health</span>
-          </div>
+          <img src={logo} alt="Adjusting to Health Logo" className="h-10 w-auto sm:h-12" />
           <p className="mt-3 max-w-sm text-xs sm:text-sm text-background/60 sm:mt-4">
             Adjusting Sydney to a healthier life. Evidence-based chiropractic care across three premium practice locations.
           </p>
